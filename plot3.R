@@ -27,6 +27,9 @@ ds1$Sub_metering_2 <- as.numeric(levels(ds1$Sub_metering_2))[ds1$Sub_metering_2]
 # Gathering 2 days Submeterings(SMS) and weekday in Feb 2007
 Feb2daysSMS <- ds1[(ds1$Date =="2007-02-01" | ds1$Date =="2007-02-02"),c(7,8,9,11)]
 
+#opening graphic device
+png("plot3.png", width=480, height=480, type="windows")
+
 # Creating line plot for Feb2daysSMS
 with(Feb2daysSMS, {
   plot(Sub_metering_1~Datetime, type="l",
@@ -39,7 +42,5 @@ with(Feb2daysSMS, {
 legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2, 
        legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
-# Exporting Graphic 
-# please note: any less width is causing the cutting the legend.
-dev.copy(png, file="plot3.png", height=480, width=480)
+#turning off Graphic device
 dev.off()

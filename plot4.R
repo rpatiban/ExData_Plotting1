@@ -29,6 +29,9 @@ ds1$Voltage <- as.numeric(levels(ds1$Voltage))[ds1$Voltage]
 # Gathering 2 days data in Feb 2007
 Feb2days <- ds1[(ds1$Date =="2007-02-01" | ds1$Date =="2007-02-02"),]
 
+#opening graphic device
+png("plot4.png", width=480, height=480, type="windows")
+
 # Creating line plot for Feb2daysSMS
 par(mfrow=c(2,2), mar=c(4,4,2,1), oma=c(0,0,2,0))
 with(Feb2days, {
@@ -46,7 +49,5 @@ with(Feb2days, {
        ylab="Global Rective Power",xlab="")
 })
 
-# Exporting Graphic 
-# please note: any less width is causing the cutting the legend.
-dev.copy(png, file="plot4.png", height=480, width=480)
+#turning off Graphic device
 dev.off()
